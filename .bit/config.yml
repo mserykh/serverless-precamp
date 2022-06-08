@@ -1,0 +1,113 @@
+title: Sample Learning Lab
+description: >-
+    Course description: Place your course description here...
+template:
+    name: learninglab-template
+    repo: your-learninglab-template
+before:
+    - type: createIssue
+      title: Getting Started with Serverless
+      body: 1.1-Week 1 Step 1.md
+steps:
+    - title: 'Learning GitHub'  
+      description: 'Task:'
+      event: pull_request.closed
+      stepType: PRmerge
+      actions:
+        - type: respond
+          with: hello.md
+          files: ['blog.md']
+          scripts: n/a
+        - type: createIssue
+          title: 'Say Hello to VSCode'
+          body: 1.2-Week 1 Step 2.md
+        - type: closeIssue
+    - title: 'Say Hello to VSCode' 
+      description: 'Task:'
+      event: workflow_run.completed
+      stepType: checks
+      branch: hello
+      actions:
+        - type: respond
+          with: mergepr.md
+          files: ['n/a']
+          scripts: test.1.2.js
+    - title: 'Merge the PR' 
+      description: 'Tasks:'
+      event: pull_request.closed
+      stepType: PRmerge
+      actions:
+        - type: respond
+          with: hello.md
+          files: ['n/a']
+          scripts: n/a
+        - type: createIssue
+          title: 'Getting Cat Pics with Postman'
+          body: 1.3-Week 1 Step 3.md
+        - type: closeIssue
+    - title: 'Getting Cat Pics with Postman' 
+      description: 'Task:'
+      event: issue_comment.created
+      stepType: IssueComment
+      branch: hello
+      actions:
+        - type: createIssue
+          title: 'It is Late!'
+          body: its_late.md
+        - type: closeIssue
+    - title: 'It is Late!' 
+      description: 'Task:'
+      event: workflow_run.completed
+      stepType: checks
+      branch: late
+      actions:
+        - type: respond
+          with: mergepr.md
+          files: ['n/a']
+          scripts: late.js
+    - title: 'Merge the PR' 
+      description: 'Tasks:'
+      event: pull_request.closed
+      stepType: PRmerge
+      actions:
+        - type: respond
+          with: hello.md
+          files: ['n/a']
+          scripts: n/a
+        - type: createIssue
+          title: 'Max Nums'
+          body: max_nums.md
+        - type: closeIssue
+    - title: 'Max Nums' 
+      description: 'Task:'
+      event: workflow_run.completed
+      stepType: checks
+      branch: max
+      actions:
+        - type: respond
+          with: mergepr.md
+          files: ['n/a']
+          scripts: late.js
+    - title: 'Merge the PR' 
+      description: 'Tasks:'
+      event: pull_request.closed
+      stepType: PRmerge
+      actions:
+        - type: respond
+          with: hello.md
+          files: ['n/a']
+          scripts: n/a
+        - type: createIssue
+          title: 'Application Completed :)'
+          body: done.md
+        - type: closeIssue
+    - title: 'Application Completed :)'
+      description: 'Task:'
+      event: workflow_run.completed
+      stepType: checks
+      branch: sentence
+      actions:
+        - type: respond
+          with: mergepr.md
+          files: ['n/a']
+          scripts: late.js
