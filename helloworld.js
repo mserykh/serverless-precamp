@@ -1,1 +1,1 @@
-// code your `hello` function here!
+export const hello = () => "Hello World";
